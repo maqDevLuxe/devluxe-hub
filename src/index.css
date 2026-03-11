@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* DevLuxe Design System — Developer Luxury Aesthetic
-   All colors are HSL. Dark mode is the primary experience.
+   All colors are HSL. Dark mode is the primary experience. 
 */
 
 @layer base {
@@ -98,16 +98,24 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
   }
 }
 
 @layer components {
+
   /* Glassmorphism card */
   .glass-card {
     background: hsl(var(--glass-bg));
@@ -137,6 +145,7 @@
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
   }
+
   .btn-pro:hover {
     box-shadow: 0 0 30px -5px hsl(var(--glow) / 0.5);
     transform: translateY(-1px);
