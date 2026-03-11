@@ -7,6 +7,9 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Search, Sun, Moon, Sparkles } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
+import { Link } from "react-router-dom";
+import { toast } from "sonner";
+
 const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
   const [searchFocused, setSearchFocused] = useState(false);
@@ -35,15 +38,25 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/50">
       <div className="container mx-auto flex items-center justify-between h-16 px-6">
-        {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <Sparkles className="w-4 h-4 text-primary-foreground" />
+        {/* Left Section: Logo & Links */}
+        <div className="flex items-center gap-8">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+              <Sparkles className="w-4 h-4 text-primary-foreground" />
+            </div>
+            <span className="font-display text-lg font-bold text-foreground">
+              DevLuxe
+            </span>
+          </Link>
+
+          {/* Nav Links */}
+          <div className="hidden lg:flex items-center gap-6">
+            <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Tools</Link>
+            <a href="#" onClick={(e) => { e.preventDefault(); toast("Templates are coming soon!"); }} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Templates</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); toast("UI Kits are coming soon!"); }} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Ui Kits</a>
           </div>
-          <span className="font-display text-lg font-bold text-foreground">
-            DevLuxe
-          </span>
-        </a>
+        </div>
 
         {/* Search */}
         <div
